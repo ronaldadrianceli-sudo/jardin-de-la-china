@@ -1,6 +1,7 @@
 // app/layout.tsx
 import type { Metadata } from 'next'
 import { Fredoka, Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import { getSiteSettings } from '@/lib/data'
 import './globals.css'
 
@@ -32,7 +33,10 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${sans.variable} ${display.variable}`}>
-      <body className="min-h-screen font-sans">{children}</body>
+      <body className="min-h-screen font-sans">
+        {children}
+        <Analytics />
+      </body>
     </html>
   )
 }
